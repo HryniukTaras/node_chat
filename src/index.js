@@ -42,17 +42,10 @@ wss.on('connection', (client) => {
     if (parsedMessage.type === 'join-room') {
       client.username = parsedMessage.username;
       client.roomId = parsedMessage.roomId;
-
       console.log(
         `Client ${client.username} connected to room ${client.roomId}`,
       );
-    }
-  });
-
-  client.on('message', (message) => {
-    const parsedMessage = JSON.parse(message);
-
-    if (parsedMessage.type === 'change-room') {
+    } else if (parsedMessage.type === 'change-room') {
       client.roomId = parsedMessage.roomId;
       console.log(`${client.username} moved to room ${client.roomId}`);
     }

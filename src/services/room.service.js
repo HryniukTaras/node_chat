@@ -24,7 +24,7 @@ function normalize({ id, title, description, userId }) {
 }
 
 async function update(roomId, title, description) {
-  const room = await roomService.findById(roomId);
+  const room = await findById(roomId);
 
   if (title) {
     room.title = title;
